@@ -1,0 +1,25 @@
+<template>
+	<template lwc:if={loadComponent}>
+		<div class="slds-col slds-size_12-of-12">
+			<!-- Showcase -->
+			<div class="slds-box">
+				<div class="secondary-container mt-3">
+					<div class="showcase primary-container">
+						<div class="showcase-img">
+							<img src={movieDetails.Poster} alt="Poster">
+						</div>
+						<div class="showcase-details">
+							<div class="showcase-title"> {movieDetails.Title} </div>
+							<div class="showcase-info"> {movieDetails.Released} | {movieDetails.imdbRating}/10 | {movieDetails.Genre} </div>
+							<div class="showcase-description">
+								{movieDetails.Plot}
+							</div>
+							<div class="showcase-extra-detail"> Director(s): {movieDetails.Director} | Writer(s): {movieDetails.Writer} </div>
+							<div class="showcase-extra-detail"> Language(s): {movieDetails.Language} | Awards: {movieDetails.Awards} </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</template>
+</template>

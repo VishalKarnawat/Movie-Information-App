@@ -1,0 +1,53 @@
+<template>
+	<div class="slds-m-around_medium">
+		<div class="slds-grid slds-wrap">
+			<div class="slds-col slds-size_12-of-12">
+				<div class="slds-box slds-theme_shade c-container">
+					<div class="secondary-container">
+						<lightning-layout class="search-center">
+							<lightning-layout-item padding="around-small" size="12" flexibility="auto" large-device-size="9"
+								small-device-size="12" medium-device-size="6">
+								<div class="slds-form-element">
+									<label class="slds-form-element__label" for="text-input-id-47">Search</label>
+									<div class="slds-form-element__control">
+										<input type="search" name="search" placeholder="Search for Movie/Series" onchange={handleChange} is-loading={loading} class="slds-input full-width" />
+									</div>
+								</div>
+							</lightning-layout-item>
+							<lightning-layout-item padding="around-small" size="12" flexibility="auto" large-device-size="3"
+								small-device-size="12" medium-device-size="6">
+								<div class="slds-form-element">
+									<label class="slds-form-element__label" for="text-input-id-47">Page</label>
+									<div class="slds-form-element__control">
+										<input type="number" onchange={handleChange} value={selectedPageNo} field-level-help="Range 1-100" name="pageno"
+											min="1" max="100" step="1" message-when-range-underflow="Minimum value is 1"
+											message-when-range-overflow="Maximum value is 1" placeholder="Placeholder text…" required
+											class="slds-input full-width" />
+									</div>
+								</div>
+							</lightning-layout-item>
+						</lightning-layout>
+					</div>
+				</div>
+
+				<!-- Search Results -->
+				<template lwc:if={displaySearchResult}>
+					<div class="slds-col slds-size_12-of-12">
+						<div class="slds-box slds-theme_shade">
+							<div class="slds-grid slds-wrap ">
+								<div class="search-results secondary-container mt-3">
+									<template for:each={searchResult} for:item="searchItem">
+										<lightning-layout-item key={searchItem.imdbID} class="result-item" size="3" padding="around-small">
+											<c-movie-tile movie={searchItem} selected-movie-id={selectedMovie}
+												onselectedmovie={movieSelectedHandler}></c-movie-tile>
+										</lightning-layout-item>
+									</template>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+			</div>
+		</div>
+	</div>
+</template>
